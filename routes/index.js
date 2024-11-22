@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.render('home', { 
-    title: 'Home Page',
-     message: 'Welcome to the Home Page!'
-    });
-});
+const registrationRoutes = require('./registration');
+const loginRoutes = require('./login');
+const homeRoutes = require('./home');
+
+router.use('/registration', registrationRoutes);
+router.use('/login', loginRoutes);
+router.use('/', homeRoutes);
 
 module.exports = router;
